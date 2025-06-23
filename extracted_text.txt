@@ -1,0 +1,815 @@
+“SUE or ensue
+
+Chapter — 5: Magnetic Materials
+
+) GANDAKI COLLEGE OF
+.. ENGINEERING AND SCIENCE
+
+5.1 Ferromagnetism, Ferrimagnetism, Paramagnetism
+
+5.2 Domain Structure, Hysteresis loop, Eddy Current losses, Soft magnetic
+materials
+
+5.3 Fe — Si alloys, Ni—Fe alloys, Ferrites for high frequency transformers
+
+5.4 Square loop materials for magnetic memory, Relaxation Oscillators, Hard
+magnetic materials such as carbon steels alnico and barium ferrites
+
+6/20/2023 MK/ EEM 1
+
+
+
+¢ Many electrical engineering devices such as inductors, transformers, rotating
+machines etc. are based on the utilization of magnetic properties of materials.
+
+¢ To understand magnetic materials and magnetism properly, following must be
+made clear.
+* Magnetic Dipole Moment
+* Magnetization Vector
+* Magnetizing Field or Magnetic Field Intensity
+* Magnetic Permeability and Susceptibility
+
+6/20/2023 MK/ EEM 2
+
+
+
+Magnetic Dipole Moment & Atomic Magnetic Moments eS)
+
+Sy
+“eesope es
+
+¢ In general for a coil, the magnitude of dipole moment is
+[Mm = NIA ; where N is the number of turns, | is the current, A is the cross sectional area
+
+¢ When a magnetic dipole is placed in a magnetic field, it experiences a torque that
+tries to rotate the magnetic moment to align its axis with the magnetic field.
+
+6/20/2023 MK/ EEM 3
+
+
+Magnetic Dipole Moment & Atomic Magnetic Moments eS)
+
+Swe
+Recep
+
+Magnetic Dipole Moment in atomic form:
+
+* An orbiting electron in an atom behaves much like a current loop and has a magnetic
+dipole moment associated with it called orbital magnetic moment, [,;-y
+
+2
+—ewr -
+orb = I(ar7) = 3 (Since, N= 1&1 = charge flow per unit time = —)
+
+2
+
+¢ Angular momentum of electronis L = m,.vr = (M,wr)r = M,wr
+
+a= —, since Lis quantized L = lh where 1 is the orbital quantum number.
+° So, orbital magnetic moment is Lt,,-, = ——
+
+° @Tr
+L Angular momentum in orbit > L
+
+¢ The intrinsic angular momentum of electron denoted by S gives rise to
+
+¢ Since Sis quantized S = sh _
+spin magnetic moment [l,,in = —-S = —Sh—
+spin ~ in, 2m,
+
+* The overall magnetic moment of the electron consists of Hy,, and LUs,;,appropriately
+added (both are vector quantities).
+
+6/20/2023 MK/ EEM 4
+
+
+Magnetization Vector (M)
+
+The magnetic field inside the solenoid with free space inside is By given by
+Bo = Upnl
+
+where n is number of turns per unit length,
+| is current through the solenoid,
+
+Lois absolute permeability of free space= 47 x 1077 =,
+
+Te .
+Mis current per unit length An orbiting electron is equivalent to a magnetic dipole moment moxz
+
+* If a cylindrical material is placed inside the solenoid, the magnetic field will be changed from Bo
+to B.
+
+* Each atom of the material responds to the applied field and develops a net magnetic moment
+[Lm along the applied field.
+
+* The medium gets magnetized, Magnetization vector M describes the extent of magnetization of
+the medium.
+
+¢ Magnetization vector M is defined as magnetic dipole moment per unit volume.
+M= 1 ON _ ; where Ngtomic= NuMber of atoms per unit volume,
+7 y dix Pmi — "atomicHav: Uay= average magnetic dipole moment per atom.
+
+6/20/2023 MK/ EEM 5
+
+
+Magnetizing Field, Magnetic Field Intensity
+
+¢ The field inside the magnetized material is the sum of the applied field H and a contribution from
+the magnetization M at the material.
+¢ Magnetizing field H is the cause and magnetic field B is its effect.
+
+¢ H solely depends upon external conduction currents only whereas the magnetic field B depends
+on the magnetization capability of the material.
+
+(b)
+Fig. 5.4 Magnetic field of a solenoid with and without medium.
+
+6/20/2023 MK/ EEM
+
+
+Magnetic Permeability and Susceptibility
+
+The magnetic permeability of the medium at any point is defined as the magnetic field per unit
+magnetizing field
+
+h= 7H represents to what extent a medium is permeable by a magnetic field.
+
+Relative permeability of the medium is defined as the fractional increase in the magnetic field with
+respect to the magnetic field in free space when a material medium is introduced.
+
+jis absolute permeability,
+
+HW; =, =]
+Bo MoH L, is relative permeability,
+
+= Moby:
+" Ho is absolute permeability of the free space = 47 x 10-7 H
+
+The magnetization M produced in the material depends on the net magnetic field B.
+Magnetization M is related to magnetizing field H as M = ¥,,H ; xm is magnetic susceptibility
+Now, B = By + UpM
+
+B = [MoH (due to vacuum) + fy9M (due to material)
+
+B= MoH + HoXmH This expression relates the relative permeability
+
+B= (1+ X¥m)MoH with magnetic susceptibility of the material.
+B = U,UoH; where pw, = (1 + Xm)
+
+6/20/2023 MK/ EEM 7
+
+
+Ferromagnetism
+
+Ferromagnetic materials can possess large permanent magnetization even in the absence of
+an applied field.
+
+The magnetic susceptibility is positive and very large and depends on the applied field
+intensity.
+
+The relationship between magnetization M and [oH is highly non — linear.
+At sufficiently high fields, magnetization saturates.
+
+The ferromagnetic crystal has magnetic moments of all crystal aligned in an orderly manner so
+as to give rise to the net magnetization vector M.
+
+Ferromagnetism occurs below a _ critical
+temperature T.. called Curie temperature.
+
+At temperature above this, ferromagnetism is
+lost.
+
+6/20/2023 MK/EEM Fig. 5.5 Magnetized region of Ferromagnetic material
+
+
+Anti-ferromagnetism
+
+¢ Antiferromagnetism materials have small positive susceptibility.
+¢ In the absence of external field, there is not net magnetization of the material.
+
+¢ They possess magnetic ordering in which the magnetic moments on alternating atoms in
+
+the crystals align in opposite directions — due to quantum mechanical exchange
+interaction.
+
+¢ Occurs below a critical temperature called Néel temperature. Above this they are
+paramagnetic.
+
+¢ These substances are freely magnetized when subjected to a
+strong magnetic field.
+
+¢ Example: MnO, FeO, CoO, NiO, FeClzMn0Q,, Cr, Mn, MnS etc
+
+Antiferromagnetic crystal (Cr)
+6/20/2023 MK/ EEM ;
+
+
+Ferrimagnetism
+
+Ferrimagnetic materials exhibit magnetic behavior similar to ferromagnetism below
+a critical temperature called Curie temperature.
+
+As shown in the figure, all atoms A have their spins aligned in one direction and all
+atoms B have their spins aligned in opposite direction.
+
+Magnetic moment of atom A is greater than that of atom B because of which there
+will be net magnetization in the crystal even in the absence of external applied field.
+
+These materials are non- conducting, so they do not [5 }#696—++o Coen |
+suffer from eddy current losses. |
+This is the reason for these materials being used in high Ore-O O-meO
+frequency electronic applications.
+
+These materials are generally known as ferrites and
+represented by XFe304_ where X=
+Mg, Cu, Mn, Ni, Zn, Cd etc.
+
+. 5.7 Magnetic ordering i i tal
+6/20/2023 MK/ EEM g g in ferrimagnetic crys
+
+
+Paramagnetism
+
+Paramagnetic materials have small positive magnetic susceptibility.
+
+In the absence of external magnetic field, molecular moments (atomic moments) are randomly
+oriented due to random collision of molecules.
+
+So, the average dipole moment and the net magnetization both are zero.
+
+When an external field is applied, ,,, does not equal zero and depends upon the applied field
+[HoH and hence the magnetization is also non — zero and is equal to 7,,,H.
+
+Magnetization increase with f4gH but decreases with increase in temperature.
+
+At higher temperature, the molecular collisions destroy the alignment of molecular magnetic
+moments with applied field i.e. Curie law is obeyed.
+
+When they are placed in a non- uniform ==]
+magnetic field, the induced magnetization is Q yA) Q -o Pr
+along the direction of B and there is a net OF 6) . O— iS
+
+force toward greater field. Ow =o ie OF OO SO
+Many gases and metals are paramagnetic. es
+
+E.g. Pt, Al, Cr, Mn and dilute solutions of (0) Hay #0, M = og
+
+ferromagnetic materials. Fig. 5.8 Without external field (a), with external field (b)
+6/20/2023 MK/ EEM qd
+
+(a) Hy = 0, M=0
+
+
+
+Diamagnetism
+
+Materials with negative magnetic susceptibility are termed as diamagnetic substances.
+Relative permeability is slightly less than unity.
+
+When placed in magnetic field, the magnetization vector M is in opposite direction to the
+applied field > causing magnetic field within the material to be less than the applied field.
+
+Negative susceptibility > these substances trying to expel the applied field from within the
+material.
+
+Covalent crystals and many ionic crystals are diamagnetic because the constituent atoms
+have no unfilled sub-shell.
+
+Superconductors are perfect diamagnet with y,, = —1 and totally expel the applied field.
+
+Other examples are Bi, Sb, Au, Cu, Hg, water, air, alkali halides, organic materials, many
+polymers, covalent solids like Si, Ge, diamond etc.
+
+The average value of magnetic susceptibility of diamagnetic materials is in the range of
+—10~°
+
+6/20/2023 MK/ EEM 12
+
+
+Domain Structure / Domain Theory of Ferromagnetism
+
+A magnetic domain is a region of the crystal in which all the spin magnetic moments are
+aligned to produce a magnet in one direction only.
+
+Figure alongside shows a single crystal of iron that has a permanent magnetization.
+
+There is a potential energy stored in a magnetic field called magnetostatic energy which can be
+reduced in the external field by dividing the crystal into two domains where the
+magnetizations are in opposite directions.
+
+Domain wall (180°) Closure domain Closure domains
+
+\ \ 90° domain wall
+Thus, there is a boundary between the N
+two domains where the magnetization |
+changes from one direction to the /
+opposite direction called as Domain wall
+or Bloch wall. :
+
+External field
+
+(a () G a
+
+6/20/2023 MK/ EEM Figure:- creation of magnetic domain
+
+
+Domain Structure / Domain Theory of Ferromagnetism
+
+The magnetostatic energy can be further reduced by eliminating these external field lines by
+closing the ends with sideway domains (Closure domain) with magnetization at 90°.
+
+Forming domains reduces magnetostatic energy but potential energy in the walls increases
+due to addition of walls.
+
+Thus, creation of magnetic domains Domain wall (180°) Ces bor dor ain watt COUT domains
+continues until the magnetostatic energy
+
+. “ae . . N
+reduction by addition of domains is
+balanced by increase in potential energy As
+in the walls due to addition of walls. |
+
+S
+
+In this condition, there is minimum
+potential _ energy with no_ net Saernal field
+magnetization. “ ‘s - id
+
+Figure:- creation of magnetic domain
+
+6/20/2023 MK/ EEM 14
+
+
+When we apply an external magnetic field to the crystal
+with domains as in the figure, the magnetization of
+crystal along the field occurs, in principle, by the growth
+of domains with magnetization along the field 'H’.
+
+i.e. the wall between domain A and domain B migrates
+towards right enlarging domain A and shrinking domain
+B which is caused by spins in the wall, and also spins in
+
+region B adjacent to the wall. Figure (e) Figure (f)
+
+Figure:- Domain Wall Motion
+
+Gradually rotated by the applied field in the direction
+of field. The magnetization process involves the
+motions of wall which is called Domain Wall Motion. | | | | |
+
+Gradual rotation
+of magnetic moments
+
+| 77 O\\\|
+
+Domain A gi BOC wall———>
+
+The Domain Wall is not simply one atomic spacing
+wide.
+
+6/20/2023 MK/ EEM
+
+NIL
+
+Domain B
+
+eee eee ene eee eee
+
+15
+
+
+Losses in magnetic materials
+
+¢ When magnetic materials are subjected to changing magnetic field (flux), two types of
+losses occur which are:
+
+¢ Eddy current loss
+¢ Hysteresis loss
+
+¢ Eddy Current Loss:
+
+Eddy currents are loops of electric currents induced within materials by a changing magnetic field
+because of Faraday’s laws of induction.
+
+Eddy current flow in closed path perpendicular to the applied magnetic field.
+
+Eddy current creates its own magnetic field that oppose the magnetic field that created it, following
+Lenz’ Law.
+
+¢ Eddy currents generate resistive losses that transform some form of energy to heat which reduces
+efficiency of iron - core of transformers and electric motors and other devices that use changing
+magnetic field.
+
+¢ Eddy currents are minimized in these devices by selecting magnetic core materials that have low
+electrical conductivity (e.g. Ferrites) or by using thin sheet of core forming laminations.
+
+
+Hysteresis Loop and loss
+
+The complete M versus H curve obtained by changing magnetizing field (H) from positive x to negative x
+for corresponding values of magnetization is a closed loop called as hysteresis loop.
+
+When an external magnetic field 'H' is applied to an unmagnetized iron sample,
+* at start there is very small net magnetization
+
+* as the value of ‘H’ is increased, the domain motion extend to larger shapes encountering various obstacles such as
+
+crystal imperfections, impurities and so on.
+Sudden changes in magnetization induce
+
+eddy currents (circulating current) that 4 £2 Ms }-------
+
+dissipate energy via joule heating (/7R) c Bre * § ots
+a _b c d
+
+called eddy current losses.
+Reversible Irreversible —_ Rotation Saturation
+
+boundary bounda
+wcll aoe of M of M
+
+As we go on increasing the external
+magnetic field, eventually a_ single ,.
+domain is created and further increase
+in field, causes M to align in the
+direction of H and then the sample -x
+reaches saturation magnetization M,,; “A. o
+
+6/20/2023 MK/ EEM 17
+
+
+Hysteresis Loop and loss
+
+Now, if the magnetizing force is reduced then magnetization of iron sample decreases
+Even when the magnetizing force is reduced to zero, induced magnetization does not reduced to zero
+
+Some residual remains called as residual magnetization (M,.), also called as retentivity. This is useful in a
+magnetic memory device.
+
+If magnetizing field is applied
+in the reverse direction,
+magnetization of the sample
+decreases and at a certain
+value, magnetization 'M'
+becomes zero.
+
+The magnetizing field
+required to totally
+demagnetize the sample is
+called coercive field H,, also
+called as coercivity. _B
+
+Figure (a): M- H hysteresis curve Figure (b): corresponding B - H hysteresis curve
+6/20/2023 MK/ EEM 18
+
+
+Hysteresis Loop and loss
+
+If the demagnetization is further increased in reverse direction, the process from point e will be similar
+to that when magnetizing the sample in reverse direction.
+
+Point g represents saturation magnetization —M,,,;in reverse direction.
+
+Decreasing the magnetizing field
+from —H, q; to zero again leaves
+residual magnetization.
+
+To eliminate this we need to apply
+magnetizing field in reverse aH
+direction.
+
+The energy dissipated during
+magnetization & demagnetization
+process is given by the area of
+hysteresis loop.
+
+—B
+Figure (a): M-H hysteresis curve Figure (b): corresponding B - H hysteresis curve
+
+6/20/2023 MK/ EEM 19
+
+
+Soft Magnetic material
+
+That magnetic material which can be easily magnetized and demagnetized is called soft
+magnetic material.
+These materials have
+* very low value of coercivity,
+* very large saturation magnetization (M,,;)
+* small hysteresis area.
+* Ideally zero coercivity,
+* zero retentivity
+* very large saturation magnetization.
+
+Their B-H curve has small area, so the power loss per unit cycle is small.
+
+Thus, suitable for applications where repeated cycles of magnetization and demagnetization
+are involved.
+
+Examples: electric motors, transformers, inductor having varying field, electromagnetic relay.
+
+6/20/2023 MK/ EEM 20
+
+
+Hard Magnetic materials
+
+That magnetic material which is difficult to magnetized and demagnetized is called hard
+magnetic material.
+These materials have
+° very large coercivity,
+* very large saturation magnetization (M,,;)
+° large hysteresis area.
+
+The coercive field for hard magnetic materials is millions
+of times greater than those for soft magnetic materials.
+
+Their B-H curve is broad and almost rectangular in shape,
+so the power loss per unit cycle is high.
+
+They are useful for making permanent magnets and in
+magnetic storage of digital data.
+
+6/20/2023 MK/ EEM 21
+
+
+Fe — Si alloys, Ni —Fe alloys
+
+Pure iron (Fe) despite being soft magnetic material is not normally used as magnetic material because its
+conductivity allows large eddy currents to be induced under varying fields.
+
+By adding (2 — 4%) of Silicon to Iron, Silicon Steel is obtained which is still soft magnetic material with
+increased resistivity but reduced eddy current loss.
+
+Mostly used in manufacture of transformers and other electrical machineries for alternating current
+applications.
+
+Similarly, Nickel — Iron alloys with composition around 77% Ni and 23% Fe constitute a soft magnetic
+material with low coercivity, low hysteresis loss and high initial and maximum relative permeabilities.
+
+* High initial relative permeability useful in low magnetic field applications that are typically found in high
+frequency works in electronics like audio and wide band transformers. More applications on: sensitive relays,
+current transformers, magnetic recording heads, magnetic shielding etc.
+
+Alloying Iron with Nickel increases resistivity and hence reduces the eddy current losses in the machinery.
+The domain wall motions are easy in Nickel composition resulting smaller hysteresis losses in the material.
+
+There are number of commercial Ni — Fe alloys whose application depends on exact composition ( which
+may also have a few percentages of Mo, Cr, Cu, etc) and method of preparation (e.g. mechanical rolling).
+
+6/20/2023 MK/ EEM 22
+
+
+e e Be.
+Ferrites for high frequency transformers Co)
+
+° Ferrites are ferromagnetic materials which are typically oxides of mixed transition metals, one of which is iron.
+
+* Ferrites are ferromagnetic materials, normally insulators, so do not suffer from eddy current losses (very high
+resistance allows only very small current and hence very small or no losses) > thus suitable for high frequency
+applications
+
+* Ferrites can have high initial permeabilities and low losses, but they do not possess large saturation
+magnetization like that in ferromagnets.
+
+¢ There are many types of ferrites available depending on the application, tolerable losses and required upper
+frequency of operation.
+¢ Manganese Zinc Ferrites have high initial relative permeability of 2000 but are only useful up to 1 MHz.
+
+° Nickel Zinc Ferrites have lower initial relative permeability of 200 but they can be used up to a frequency of
+200 MHz.
+
+* Garnets are ferrimagnetic materials, used at highest frequencies covering the microwave range (1 — 300
+GHz). Yttrium Iron Garnet YIG (Y3 Fe;0;2)
+* one of the simplest garnets with very low hysteresis loss at microwave frequencies.
+* Have excellent dielectric properties with high resistivities and consequently low losses.
+* Main disadvantage of garnets is the low saturation magnetization and low Curie temperature.
+
+¢ The initial relative permeability in the high frequency region decreases with increase in frequency.
+
+6/20/2023 MK/ EEM 23
+
+
+Square Loop Magnetic Materials
+
+Materials having very high coercivities are termed as square loop magnetic materials because
+of the B-H loop imitating the square shape.
+
+To store any information in the form of digitalized data, these materials are most suited.
+
+Uses different patterns of magnetization in a magnetizable material to store data and is a
+form of non —-volatile memory
+
+The magnetic surface is conceptually divided into many small sub-mm sized magnetic
+regions, referred as magnetic domains. Information is stored on these domains.
+
+Have high (BH)max values, used in stepper motors, servomotors, gyroscope
+
+The only drawback of these materials are lower Curie temperature compared to other
+magnetic materials.
+
+6/20/2023 MK/ EEM 24
+
+
+Selected soft magnetic materials (FE), is hysteresis loss i.e. energy dissipated per unit
+volume per cycle, J/m? at B,, = 1T)
+ee ee ee
+
+Magnetic
+
+Material tots, £ Beat, T B,, T. Hej Himax
+
+Ideal soft
+
+iron 0 Large 0 Large Large
+
+(commercial
+
+grade, 0.2%
+
+impuriries a 10bo. 46860
+ani 107% 2 ~~ =
+
+Silicon tron < 400000
+
+(2-4% Si)
+
+6/20/2023 MK/ EEM
+
+E,, dm?
+
+0
+
+250
+
+30 - 100
+
+Applications
+
+Transformer cores,
+inductors, magnetic
+recording heads, re-
+lays, electromagnet
+cores, machines
+
+Due to large eddy
+current losses used
+only in some elect-
+magnets and relays
+Wide range of ac
+machinery
+
+
+
+Supermalloy 2 x 107”
+(79%Ni,
+15%Fe,
+5%Mo,
+0.5%Mn)
+Permalloy
+(78.5%Ni,
+21.5%Fe)
+
+5 x 107°
+
+Glassy 2x 10°
+metals
+iFe -
+
+Si - B)
+Ferrites
+Mrn- Zn
+territe
+
+10°
+
+0.7—
+0.8
+
+0.86
+
+1.6
+
+0.4
+
+' <0.1
+
+<0.1
+
+<10°
+
+<0.01
+
+105
+
+8000
+
+2000
+
+10°
+
+10°
+
+108
+
+5000
+
+<0.5
+
+<0.1
+
+20
+
+<0.01
+
+Selected soft magnetic materials (FE), is hysteresis loss i.e. energy dissipated per unit
+volume per cycle, J/m? at B,, = 1T)
+
+High permeability low
+loss electrical
+devices, @.g. speci-
+ality transformers,
+magnetic amplifier
+Low loss electrical
+devices, audio tran-
+sformers, HF trans-
+formers, recording
+heads, filters
+
+Low loss transfor-
+mer cores
+
+HF low loss appli-
+cations. HF trans-
+formers, recording
+heads, inductors (E
+
+and U cores)
+
+6/20/2023
+
+MK/ EEM
+
+26
+
+
+
+Néel temperature (T,) and paramagnetic Curie temperature (6..) for some anti-
+ferrimagnetic materials
+
+Material Ty,K 8., K
+
+MnF, “Ey Re 113
+
+MnO, 84 316
+
+MnO 122 610
+
+MnsS 165 528
+
+FeO | a. ‘4 198 570
+
+NiF, 3 | 73 116
+
+CoO 292 280
+
+BO ag wn ea a ge ed es a er a ee
+Table 5.5 Susceptibility of some diamagnetic materials
+
+a A ae ee eT
+Material % = u,-1,x10° Material X= My 1,x10°
+Al, -0.5 Cu -0.9
+
+BaCl, -2.0 Au -3.6
+
+NaCl -1.2 Ge -0.8
+Diamond -2.1 Si -0.3
+
+Graphite -12 Se -1.7
+
+6/20/2023 MK/ EEM
+
+
+Occurrence of permanent atomic magnetic dipoles and interaction
+between neighboring dipoles
+
+Type of material Permanent dipoles Interaction between neighboring dipoles }
+Paramagnetic Yes Negligible
+
+Ferromagnetic Yes Parallel orientation
+
+Antiferrimagnetic Yes Antiparallel orientation of equal moments
+Ferrimagnetic Yes Antiparallel orientation of unequal moments
+NEE Heee eee ee Ee SS a aac aeaaacaamermmaaaaiaaeiamaamamemeal
+Table 5.3 Susceptibilities of some paramagnetic materials at 300K
+
+Substance x =p,-1, x10° Substance X =y,-1, x10%
+CrCl, 1.5 Fe,O, LAA
+Cr,0, 1.7 Fes(SO,)3 2.2
+
+CoO 5:8 FeCl, 3.7
+CoSO, 2.0 FeSO, 2.8
+
+6/20/2023 MK/ EEM
+
+
+
