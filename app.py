@@ -1,16 +1,17 @@
 import streamlit as st
-from PIL import Image, ImageOps, ImageFilter
+from PIL import Image, ImageDraw
 from pdf2image import convert_from_bytes
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.pagesizes import letter
+from reportlab.lib.utils import ImageReader
 import pytesseract
+from pytesseract import Output
 import io
 import os
 
-# ------------------- Font Options -------------------
-# Assuming you have a 'fonts' folder with these files inside your project directory
+# -------------------- Font Setup --------------------
 font_folder = "fonts"
 font_options = {
     "Patrick Hand": os.path.join(font_folder, "PatrickHand-Regular.ttf"),
@@ -20,137 +21,100 @@ font_options = {
     "Indie Flower": os.path.join(font_folder, "IndieFlower-Regular.ttf"),
 }
 
-# Register fonts once at startup with simplified font names (no spaces)
-for font_name, font_path in font_options.items():
-    simple_name = font_name.replace(" ", "")
-    if os.path.isfile(font_path):
+for name, path in font_options.items():
+    simple_name = name.replace(" ", "")
+    if os.path.isfile(path):
         try:
-            pdfmetrics.registerFont(TTFont(simple_name, font_path))
+            pdfmetrics.registerFont(TTFont(simple_name, path))
         except Exception as e:
-            st.error(f"Error loading font file {font_path}: {e}")
+            st.error(f"Error loading font {name}: {e}")
     else:
-        st.error(f"Font file not found: {font_path}. Please add it to the 'fonts' folder.")
+        st.error(f"Font file not found: {path}")
 
-# ------------------- Cached Functions -------------------
-
+# -------------------- Convert PDF to Images --------------------
 @st.cache_data(show_spinner=False)
 def pdf_to_images(pdf_bytes):
     return convert_from_bytes(pdf_bytes)
 
-@st.cache_data(show_spinner=False)
-def generate_sample_pages(_images, font_name, num_pages=2):
-    previews = []
-    simple_font_name = font_name.replace(" ", "")
-
-    for i in range(min(num_pages, len(_images))):
-        img = _images[i].convert("L")
-        img = ImageOps.autocontrast(img)
-        img = img.filter(ImageFilter.SHARPEN)
-        text = pytesseract.image_to_string(img, lang='eng')
-
-        buffer = io.BytesIO()
-        c = canvas.Canvas(buffer, pagesize=letter)
-        c.setFont(simple_font_name, 14)
-
-        y = 750
-        for line in text.split('\n'):
-            c.drawString(50, y, line)
-            y -= 20
-            if y < 50:
-                break
-        c.save()
-
-        buffer.seek(0)
-        preview_img = convert_from_bytes(buffer.getvalue())[0]
-        img_byte_arr = io.BytesIO()
-        preview_img.save(img_byte_arr, format='PNG')
-        previews.append(img_byte_arr.getvalue())
-
-    return previews
-
-def generate_handwriting_pdf(images, font_name):
+# -------------------- Generate PDF with New Font --------------------
+def create_pdf_with_text_overlay(images, font_name):
     simple_font_name = font_name.replace(" ", "")
     buffer = io.BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
-    c.setFont(simple_font_name, 14)
+    pdf_width, pdf_height = letter
 
-    for page in images:
-        img = page.convert("L")
-        img = ImageOps.autocontrast(img)
-        img = img.filter(ImageFilter.SHARPEN)
-        text = pytesseract.image_to_string(img, lang='eng')
+    for img in images:
+        img_width, img_height = img.size
+        ocr_data = pytesseract.image_to_data(img, output_type=Output.DICT, lang='eng')
 
-        y = 750
-        for line in text.split('\n'):
-            c.drawString(50, y, line)
-            y -= 20
-            if y < 50:
-                c.showPage()
-                c.setFont(simple_font_name, 14)
-                y = 750
+        # Mask text only
+        img_masked = img.convert("RGB").copy()
+        draw = ImageDraw.Draw(img_masked)
+        for i in range(len(ocr_data['text'])):
+            if ocr_data['text'][i].strip():
+                x, y, w, h = (
+                    ocr_data['left'][i],
+                    ocr_data['top'][i],
+                    ocr_data['width'][i],
+                    ocr_data['height'][i],
+                )
+                draw.rectangle([(x, y), (x + w, y + h)], fill="white")
+
+        # Save modified image to buffer
+        img_bytes = io.BytesIO()
+        img_masked.save(img_bytes, format='PNG')
+        img_bytes.seek(0)
+        c.drawImage(ImageReader(img_bytes), 0, 0, width=pdf_width, height=pdf_height)
+
+        # Overlay new text at same positions
+        for i in range(len(ocr_data['text'])):
+            text = ocr_data['text'][i].strip()
+            if text:
+                x, y, w, h = (
+                    ocr_data['left'][i],
+                    ocr_data['top'][i],
+                    ocr_data['width'][i],
+                    ocr_data['height'][i],
+                )
+                pdf_x = (x / img_width) * pdf_width
+                pdf_y = pdf_height - ((y + h) / img_height) * pdf_height
+                font_size = max(8, (h / img_height) * pdf_height)
+                c.setFont(simple_font_name, font_size)
+                c.drawString(pdf_x, pdf_y, text)
+
         c.showPage()
 
     c.save()
     buffer.seek(0)
     return buffer
 
-def get_esewa_payment_url(amount, pid="123456789", scd="EPAYTEST"):
-    return_url = "http://localhost:8501?payment=success"
-    fail_url = "http://localhost:8501?payment=failed"
+# -------------------- Streamlit UI --------------------
+st.set_page_config(page_title="Handwriting Font Replacer", layout="centered")
+st.title("📝 Handwriting Style Replacer")
+st.markdown("This app replaces handwritten text with selected fonts while keeping diagrams and layout intact.")
 
-    url = f"https://uat.esewa.com.np/epay/main?"
-    url += f"amt={amount}&pdc=0&psc=0&txAmt=0&"
-    url += f"tAmt={amount}&pid={pid}&scd={scd}&"
-    url += f"su={return_url}&fu={fail_url}"
-    return url
-
-# ------------------- Streamlit UI -------------------
-
-st.title("📝 Handwriting Converter Web App")
-
-uploaded_pdf = st.file_uploader("Upload your handwritten PDF", type="pdf")
-
-if uploaded_pdf is not None:
+uploaded_pdf = st.file_uploader("Upload your handwritten PDF", type=["pdf"])
+if uploaded_pdf:
     pdf_bytes = uploaded_pdf.read()
-    st.session_state['pdf_bytes'] = pdf_bytes
+    images = pdf_to_images(pdf_bytes)
+    font_choice = st.selectbox("Choose a handwriting style", list(font_options.keys()))
 
-if 'pdf_bytes' in st.session_state:
-    images = pdf_to_images(st.session_state['pdf_bytes'])
+    st.subheader("📄 Original Page Previews")
+    for i, img in enumerate(images[:2]):
+        st.image(img, caption=f"Original Page {i + 1}", use_container_width=True)
 
-    selected_font_name = st.selectbox(
-        "✍️ Choose handwriting style",
-        list(font_options.keys()),
-        key="font_select"
-    )
-
-    # Generate sample previews passing font name (string, hashable)
-    sample_previews = generate_sample_pages(images, selected_font_name, num_pages=2)
-
-    st.markdown("### 📄 Sample Preview (First 2 Pages)")
-    for i, img_data in enumerate(sample_previews):
-        st.image(img_data, caption=f"Preview Page {i + 1}", use_container_width=True)
+    st.subheader("✍️ Preview with Selected Font")
+    preview_pdf = create_pdf_with_text_overlay(images[:2], font_choice)
+    preview_imgs = convert_from_bytes(preview_pdf.getvalue())
+    for i, img in enumerate(preview_imgs):
+        st.image(img, caption=f"Preview Page {i + 1}", use_container_width=True)
 
     total_pages = len(images)
-    total_cost = total_pages * 10  # Rs. 10 per page price example
-    st.info(f"💰 Total cost: Rs. {total_cost}")
+    cost_per_page = 10
+    total_cost = total_pages * cost_per_page
+    st.info(f"Total Pages: {total_pages} | Total Cost: Rs. {total_cost}")
 
-    # Check payment status from query params
-    query_params = st.query_params
-    payment_status = query_params.get("payment", [None])[0]
-
-    if payment_status == "success":
-        st.success("✅ Payment successful! Generating your final PDF...")
-        final_pdf = generate_handwriting_pdf(images, selected_font_name)
-        st.download_button(
-            label="📥 Download Final PDF",
-            data=final_pdf,
-            file_name="converted_handwriting.pdf",
-            mime="application/pdf"
-        )
-    elif payment_status == "failed":
-        st.error("❌ Payment failed. Please try again.")
-    else:
-        st.markdown("### 💳 Proceed to Payment")
-        payment_url = get_esewa_payment_url(total_cost)
-        st.markdown(f"[Click here to pay via eSewa]({payment_url})", unsafe_allow_html=True)
-        st.warning("⚠️ After payment, you will be redirected here to download your file.")
+    if st.button(f"Pay Rs. {total_cost} & Generate Full PDF"):
+        result_pdf = create_pdf_with_text_overlay(images, font_choice)
+        st.success("✅ PDF generated successfully!")
+        st.download_button("Download PDF", result_pdf, file_name="converted_handwriting.pdf", mime="application/pdf")
