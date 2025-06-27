@@ -12,8 +12,22 @@ import io
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Register handwriting font
-font_path = "PatrickHand-Regular.ttf"
-pdfmetrics.registerFont(TTFont("PatrickHand", font_path))
+
+font_options = {
+    "Patrick Hand": "PatrickHand-Regular.ttf",
+    "Handlee": "Handlee-Regular.ttf",
+    "Dancing Script": "DancingScript-Regular.ttf",
+    "Homemade Apple": "HomemadeApple-Regular.ttf",
+    "Indie Flower": "IndieFlower-Regular.ttf",
+}
+
+# User selects font from dropdown
+selected_font_name = st.selectbox("✍️ Choose handwriting style", list(font_options.keys()))
+selected_font_path = font_options[selected_font_name]
+
+# Register the selected font as "CustomFont"
+pdfmetrics.registerFont(TTFont("CustomFont", selected_font_path))
+
 
 # Title
 st.title("📝 Handwriting Style Changer")
@@ -49,7 +63,8 @@ if uploaded_pdf:
         # Generate PDF in memory
         buffer = io.BytesIO()
         c = canvas.Canvas(buffer)
-        c.setFont("PatrickHand", 14)
+        c.setFont("CustomFont", 14)
+
         
         lines = all_text.split("\n")
         y = 800
@@ -58,7 +73,8 @@ if uploaded_pdf:
             y -= 20
             if y < 50:
                 c.showPage()
-                c.setFont("PatrickHand", 14)
+                c.setFont("CustomFont", 14)
+
                 y = 800
         c.save()
         
