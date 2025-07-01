@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Handwriting Font Creator</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 1rem; }
+  canvas { border: 1px solid #ccc; touch-action: none; }
+  button { margin-top: 10px; padding: 10px 20px; }
+  #char-label { font-size: 1.2rem; margin-bottom: 5px; }
+  #status { margin-top: 15px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Handwriting Font Creator</h1>
+
+<div id="char-label">Draw character: <span id="current-char">A</span></div>
+<canvas id="canvas" width="300" height="300"></canvas><br/>
+
+<button id="clear-btn">Clear</button>
+<button id="save-btn">Save Character</button>
+<button id="generate-btn">Generate Font</button>
+
+<div id="status"></div>
+
+<script>
+  const API_BASE = "http://127.0.0.1:5000";
+
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  let currentCharIndex = 0;
+  const currentCharElem = document.getElementById("current-char");
+  const statusElem = document.getElementById("status");
+
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+
+  let drawing = false;
+
+  function clearCanvas() {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  clearCanvas();
+
+  function getMousePos(e) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: (e.clientX || e.touches[0].clientX) - rect.left,
+      y: (e.clientY || e.touches[0].clientY) - rect.top,
+    };
+  }
+
+  canvas.addEventListener("mousedown", e => {
+    drawing = true;
+    const pos = getMousePos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+    e.preventDefault();
+  });
+  canvas.addEventListener("touchstart", e => {
+    drawing = true;
+    const pos = getMousePos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+    e.preventDefault();
+  });
+
+  canvas.addEventListener("mousemove", e => {
+    if (!drawing) return;
+    const pos = getMousePos(e);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    e.preventDefault();
+  });
+  canvas.addEventListener("touchmove", e => {
+    if (!drawing) return;
+    const pos = getMousePos(e);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    e.preventDefault();
+  });
+
+  canvas.addEventListener("mouseup", e => {
+    drawing = false;
+    e.preventDefault();
+  });
+  canvas.addEventListener("touchend", e => {
+    drawing = false;
+    e.preventDefault();
+  });
+
+  document.getElementById("clear-btn").onclick = () => {
+    clearCanvas();
+  };
+
+  document.getElementById("save-btn").onclick = async () => {
+    const char = chars[currentCharIndex];
+    const imgData = canvas.toDataURL("image/png");
+
+    statusElem.textContent = `Saving character "${char}"...`;
+
+    try {
+      const res = await fetch(`${API_BASE}/save_char`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ char: char, image: imgData }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        statusElem.textContent = `Saved character "${char}" successfully!`;
+        clearCanvas();
+        currentCharIndex++;
+        if (currentCharIndex >= chars.length) {
+          statusElem.textContent += " All characters saved. You can generate the font now.";
+          currentCharElem.textContent = "-";
+          document.getElementById("save-btn").disabled = true;
+        } else {
+          currentCharElem.textContent = chars[currentCharIndex];
+        }
+      } else {
+        statusElem.textContent = `Error: ${data.error || "Unknown error"}`;
+      }
+    } catch (e) {
+      statusElem.textContent = `Error: ${e.message}`;
+    }
+  };
+
+  document.getElementById("generate-btn").onclick = async () => {
+    statusElem.textContent = "Generating font, please wait...";
+
+    try {
+      const res = await fetch(`${API_BASE}/generate_font`);
+      const data = await res.json();
+      if (res.ok) {
+        statusElem.textContent = "Font generated successfully! You can download it from your backend.";
+      } else {
+        statusElem.textContent = `Error: ${data.error || "Unknown error"}`;
+      }
+    } catch (e) {
+      statusElem.textContent = `Error: ${e.message}`;
+    }
+  };
+</script>
+
+</body>
+</html>
